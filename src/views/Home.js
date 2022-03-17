@@ -1,25 +1,7 @@
 import React from "react";
 import Dropzone from "../components/Dropzone";
 // reactstrap components
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  CardFooter,
-  CardImg,
-  Row,
-  Col,
-} from "reactstrap";
-
-import {
-  dashboard24HoursPerformanceChart,
-  dashboardEmailStatisticsChart,
-  dashboardNASDAQChart,
-} from "variables/charts.js";
-
-import { Line, Pie } from "react-chartjs-2";
+import { Card, CardBody, CardImg, Row, Col } from "reactstrap";
 
 function Home() {
   return (

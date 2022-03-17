@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -7,15 +7,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   Container,
-  InputGroup,
-  InputGroupText,
-  InputGroupAddon,
-  Input,
 } from "reactstrap";
 
 import routes from "routes.js";
@@ -102,6 +94,7 @@ function Header(props) {
               <a
                 href="https://drive.google.com/drive/folders/1bUPItKyx3k8lPJtmMMnQ-ltfkJmBfcoy?usp=sharing"
                 target="_blank"
+                rel="noreferrer"
                 className="nav-link btn-magnify"
               >
                 <p>
@@ -113,6 +106,7 @@ function Header(props) {
               <a
                 href="https://drive.google.com/drive/folders/1hZqiQtUUN80Frkhp-cBfjUOixNiKppi1?usp=sharing"
                 target="_blank"
+                rel="noreferrer"
                 className="nav-link btn-magnify"
               >
                 <p>

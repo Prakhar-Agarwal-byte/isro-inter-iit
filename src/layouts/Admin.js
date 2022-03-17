@@ -3,7 +3,7 @@ import React from "react";
 import PerfectScrollbar from "perfect-scrollbar";
 import { Route, Switch, useLocation } from "react-router-dom";
 
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
+import Header from "components/Navbars/Navbar.js";
 
 import routes from "routes.js";
 
@@ -39,7 +39,7 @@ function Dashboard(props) {
   return (
     <div className="wrapper">
       <div className="main-panel" ref={mainPanel}>
-        <DemoNavbar {...props} />
+        <Header {...props} />
         <Switch>
           {routes.map((prop, key) => {
             return (

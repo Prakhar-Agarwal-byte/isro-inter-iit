@@ -9,7 +9,7 @@ var routes = [
     component: Dashboard,
   },
   {
-    path: "/home",
+    path: "/",
     name: "Home",
     icon: "nc-icon nc-diamond",
     component: Home,

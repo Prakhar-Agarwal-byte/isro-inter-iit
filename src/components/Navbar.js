@@ -14,7 +14,6 @@ import routes from "routes.js";
 
 function Header(props) {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [dropdownOpen, setDropdownOpen] = React.useState(false);
   const [color, setColor] = React.useState("transparent");
   const sidebarToggle = React.useRef();
   const location = useLocation();
@@ -26,9 +25,7 @@ function Header(props) {
     }
     setIsOpen(!isOpen);
   };
-  const dropdownToggle = (e) => {
-    setDropdownOpen(!dropdownOpen);
-  };
+
   const getBrand = () => {
     let brandName = "Solar Flare Detector";
     routes.map((prop, key) => {
@@ -38,10 +35,6 @@ function Header(props) {
       return null;
     });
     return brandName;
-  };
-  const openSidebar = () => {
-    document.documentElement.classList.toggle("nav-open");
-    sidebarToggle.current.classList.toggle("toggled");
   };
   // function that adds color dark/transparent to the navbar on resize (this is for the collapse)
   const updateColor = () => {

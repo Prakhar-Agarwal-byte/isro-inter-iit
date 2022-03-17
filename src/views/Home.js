@@ -1,6 +1,5 @@
 import React from "react";
-import Dropzone from "react-dropzone";
-
+import Dropzone from "../components/Dropzone";
 // reactstrap components
 import {
   Button,
@@ -97,27 +96,7 @@ function Home() {
           <Col md="12">
             <Card className="text-center">
               <CardBody>
-                <Dropzone
-                  onDrop={(acceptedFiles) => console.log(acceptedFiles)}
-                >
-                  {({ getRootProps, getInputProps }) => (
-                    <section>
-                      <div {...getRootProps()}>
-                        <input {...getInputProps()} />
-                        <h5>
-                          Drag and drop some files here, or click to select
-                          files
-                        </h5>
-                        <p class="text-danger">
-                          *only ASCII, FITS, CDF, and CSV files are allowed
-                        </p>
-                        <Button color="primary" type="button" size="lg">
-                          Upload
-                        </Button>
-                      </div>
-                    </section>
-                  )}
-                </Dropzone>
+                <Dropzone />
               </CardBody>
             </Card>
           </Col>
@@ -141,3 +120,45 @@ function Home() {
 }
 
 export default Home;
+
+function Accept(props) {
+  const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
+    useDropzone({
+      accept: "image/jpeg,image/png",
+    });
+
+  const acceptedFileItems = acceptedFiles.map((file) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
+
+  const fileRejectionItems = fileRejections.map(({ file, errors }) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+      <ul>
+        {errors.map((e) => (
+          <li key={e.code}>{e.message}</li>
+        ))}
+      </ul>
+    </li>
+  ));
+
+  return (
+    <section className="container">
+      <div {...getRootProps({ className: "dropzone" })}>
+        <input {...getInputProps()} />
+        <p>Drag 'n' drop some files here, or click to select files</p>
+        <em>(Only *.jpeg and *.png images will be accepted)</em>
+      </div>
+      <aside>
+        <h4>Accepted files</h4>
+        <ul>{acceptedFileItems}</ul>
+        <h4>Rejected files</h4>
+        <ul>{fileRejectionItems}</ul>
+      </aside>
+    </section>
+  );
+}
+
+<Accept />;

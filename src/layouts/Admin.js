@@ -3,7 +3,7 @@ import React from "react";
 import PerfectScrollbar from "perfect-scrollbar";
 import { Route, Switch, useLocation } from "react-router-dom";
 
-import Header from "components/Navbars/Navbar.js";
+import Header from "components/Navbar.js";
 
 import routes from "routes.js";
 

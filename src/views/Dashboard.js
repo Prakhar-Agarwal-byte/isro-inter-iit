@@ -15,6 +15,7 @@ import {
 import WithFluxData from "hoc/WithFluxData";
 import Chart from "../components/Chart";
 import { useState } from "react";
+import Piechart from "components/PieChart";
 
 function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
 	const types = ["Type A", "Type B", "Type C", "Type X", "Type M"];
@@ -177,28 +178,12 @@ function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
 								</p>
 							</CardHeader>
 							<CardBody style={{ height: "266px" }}>
-								{/* <Pie
-									data={dashboardEmailStatisticsChart.data}
-									options={
-										dashboardEmailStatisticsChart.options
-									}
-								/> */}
+								<Piechart />
 							</CardBody>
 							<CardFooter>
-								<div className="legend">
-									<i className="fa fa-circle text-primary" />{" "}
-									Opened{" "}
-									<i className="fa fa-circle text-warning" />{" "}
-									Read{" "}
-									<i className="fa fa-circle text-danger" />{" "}
-									Deleted{" "}
-									<i className="fa fa-circle text-gray" />{" "}
-									Unopened
-								</div>
-								<hr />
 								<div className="stats">
 									<i className="fa fa-calendar" /> Number of
-									emails sent
+									Flare of a particular type
 								</div>
 							</CardFooter>
 						</Card>

@@ -1,15 +1,13 @@
 import React from "react";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import Header from "components/Navbar.js";
 
-import routes from "routes.js";
-
 var ps;
 
-function Dashboard(props) {
+function Dashboard({ children }) {
   const mainPanel = React.useRef();
   const location = useLocation();
   React.useEffect(() => {
@@ -33,13 +31,7 @@ function Dashboard(props) {
     <div className="wrapper">
       <div className="main-panel" ref={mainPanel}>
         <Header />
-        <Switch>
-          {routes.map((prop, key) => {
-            return (
-              <Route path={prop.path} component={prop.component} key={key} />
-            );
-          })}
-        </Switch>
+        {children}
       </div>
     </div>
   );

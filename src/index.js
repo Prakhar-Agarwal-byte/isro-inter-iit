@@ -8,17 +8,19 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import AdminLayout from "layouts/Admin.js";
 import ResultContextProvider from "context/ResultContext";
+import Home from "./views/Home";
+import Dashboard from "./views/Dashboard";
 
 ReactDOM.render(
-	<ResultContextProvider>
-		<BrowserRouter>
-			<Switch>
-				<Route
-					path="/"
-					render={(props) => <AdminLayout {...props} />}
-				/>
-			</Switch>
-		</BrowserRouter>
-	</ResultContextProvider>,
-	document.getElementById("root")
+  <ResultContextProvider>
+    <BrowserRouter>
+      <AdminLayout>
+        <Switch>
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </AdminLayout>
+    </BrowserRouter>
+  </ResultContextProvider>,
+  document.getElementById("root")
 );

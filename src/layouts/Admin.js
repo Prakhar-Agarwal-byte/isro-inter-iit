@@ -32,7 +32,7 @@ function Dashboard(props) {
   return (
     <div className="wrapper">
       <div className="main-panel" ref={mainPanel}>
-        <Header {...props} />
+        <Header />
         <Switch>
           {routes.map((prop, key) => {
             return (

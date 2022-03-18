@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { Button, Alert } from "reactstrap";
+import { Button, Alert, Spinner } from "reactstrap";
 import axios from "axios";
 
-export default function Accept(props) {
+export default function Accept({ process }) {
   const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
     useDropzone({
       accept: ".txt, .csv, .cdf, .fits",
@@ -11,6 +11,7 @@ export default function Accept(props) {
     });
 
   const [isSuccess, setIsSuccess] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleUploadClick = () => {
     if (acceptedFiles.length !== 1) {
@@ -18,11 +19,11 @@ export default function Accept(props) {
       return;
     }
     setIsSuccess(true);
-
+    setIsLoading(true);
     const formData = new FormData();
 
     // Update the formData object
-    formData.append("myFile", acceptedFiles[0], acceptedFiles[0].name);
+    formData.append("file", acceptedFiles[0], acceptedFiles[0].name);
 
     // Details of the uploaded file
     console.log(acceptedFiles[0]);
@@ -32,9 +33,12 @@ export default function Accept(props) {
     axios
       .post("https://isro-inter-iit.herokuapp.com/uploads", formData)
       .then((res) => {
+        setIsLoading(false);
+        process(res.data);
         console.log(res);
       })
       .catch((err) => {
+        setIsLoading(false);
         console.log(err);
       });
   };
@@ -65,7 +69,12 @@ export default function Accept(props) {
           *only ASCII, FITS, CDF, and CSV files are allowed
         </p>
       </div>
-      <Button color="primary" size="lg" onClick={handleUploadClick}>
+      <Button
+        disabled={isLoading}
+        color="primary"
+        size="lg"
+        onClick={handleUploadClick}
+      >
         Upload
       </Button>
       {!isSuccess && (
@@ -77,6 +86,7 @@ export default function Accept(props) {
         <h4>Rejected files</h4>
         <ul>{fileRejectionItems}</ul>
       </aside>
+      {isLoading && <Spinner color="primary">Loading...</Spinner>}
     </section>
   );
 }

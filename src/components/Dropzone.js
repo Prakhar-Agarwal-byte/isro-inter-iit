@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { useHistory } from "react-router-dom";
 import { Button, Alert, Spinner } from "reactstrap";
 import axios from "axios";
 
@@ -9,6 +10,8 @@ export default function Accept({ process }) {
       accept: ".txt, .csv, .cdf, .fits",
       maxFiles: 1,
     });
+
+  const history = useHistory();
 
   const [isSuccess, setIsSuccess] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,9 +39,11 @@ export default function Accept({ process }) {
         setIsLoading(false);
         process(res.data);
         console.log(res);
+        history.push("/dashboard");
       })
       .catch((err) => {
         setIsLoading(false);
+        setIsSuccess(false);
         console.log(err);
       });
   };

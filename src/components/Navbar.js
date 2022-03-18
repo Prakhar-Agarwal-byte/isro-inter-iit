@@ -1,4 +1,6 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+
 import {
   Collapse,
   Navbar,
@@ -11,6 +13,7 @@ import {
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const location = useLocation();
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -50,6 +53,22 @@ function Header() {
                 </p>
               </a>
             </NavItem>
+            {location.pathname == "/dashboard" && (
+              <NavItem>
+                <a
+                  href="https://isro-inter-iit.herokuapp.com/result/download"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="nav-link btn-magnify"
+                >
+                  <p>
+                    <span className="d-lg-block d-md-block">
+                      Download Result
+                    </span>
+                  </p>
+                </a>
+              </NavItem>
+            )}
           </Nav>
         </Collapse>
       </Container>

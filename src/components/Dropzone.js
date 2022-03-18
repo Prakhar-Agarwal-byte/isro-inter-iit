@@ -43,7 +43,6 @@ export default function Accept({ process }) {
       })
       .catch((err) => {
         setIsLoading(false);
-        setIsSuccess(false);
         console.log(err);
       });
   };

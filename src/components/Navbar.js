@@ -67,7 +67,7 @@ function Header() {
                 </p>
               </a>
             </NavItem>
-            {location.pathname == "/dashboard" && (
+            {location.pathname === "/dashboard" && (
               <NavItem>
                 <a
                   href="http://localhost:3000/result/download"

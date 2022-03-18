@@ -5,7 +5,6 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   CardTitle,
   Row,
   Col,
@@ -38,52 +37,6 @@ function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
               </CardHeader>
               <CardBody>
                 <Chart data={masterChart} chartType=""></Chart>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col lg="3" md="6" sm="6">
-            <Card className="card-stats">
-              <CardBody>
-                <div className="numbers">
-                  <p className="card-category">Rise Time</p>
-                  <CardTitle tag="p">{chars.riseTime}</CardTitle>
-                  <p />
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col lg="3" md="6" sm="6">
-            <Card className="card-stats">
-              <CardBody>
-                <div className="numbers">
-                  <p className="card-category">Peak Time</p>
-                  <CardTitle tag="p">{chars.peakTime}</CardTitle>
-                  <p />
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col lg="3" md="6" sm="6">
-            <Card className="card-stats">
-              <CardBody>
-                <div className="numbers">
-                  <p className="card-category">Decay Time</p>
-                  <CardTitle tag="p">{chars.decayTime}</CardTitle>
-                  <p />
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col lg="3" md="6" sm="6">
-            <Card className="card-stats">
-              <CardBody>
-                <div className="numbers">
-                  <p className="card-category">Peak Flux</p>
-                  <CardTitle tag="p">{chars.peakFlux}</CardTitle>
-                  <p />
-                </div>
               </CardBody>
             </Card>
           </Col>

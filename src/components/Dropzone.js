@@ -36,7 +36,7 @@ export default function Accept(props) {
     // Request made to the backend api
     // Send formData object
     axios
-      .post("https://isro-inter-iit.herokuapp.com/uploads", formData)
+      .post("http://localhost:3000/uploads", formData)
       .then((res) => {
         setLoading(false);
         context.process(res.data);

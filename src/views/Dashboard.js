@@ -48,7 +48,7 @@ function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
               <CardBody>
                 <div className="numbers">
                   <p className="card-category">Rise Time</p>
-                  <CardTitle tag="p"></CardTitle>
+                  <CardTitle tag="p">{chars.riseTime}</CardTitle>
                   <p />
                 </div>
               </CardBody>
@@ -59,7 +59,7 @@ function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
               <CardBody>
                 <div className="numbers">
                   <p className="card-category">Peak Time</p>
-                  <CardTitle tag="p"></CardTitle>
+                  <CardTitle tag="p">{chars.peakTime}</CardTitle>
                   <p />
                 </div>
               </CardBody>
@@ -70,7 +70,7 @@ function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
               <CardBody>
                 <div className="numbers">
                   <p className="card-category">Decay Time</p>
-                  <CardTitle tag="p"></CardTitle>
+                  <CardTitle tag="p">{chars.decayTime}</CardTitle>
                   <p />
                 </div>
               </CardBody>
@@ -81,7 +81,7 @@ function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
               <CardBody>
                 <div className="numbers">
                   <p className="card-category">Peak Flux</p>
-                  <CardTitle tag="p"></CardTitle>
+                  <CardTitle tag="p">{chars.peakFlux}</CardTitle>
                   <p />
                 </div>
               </CardBody>
@@ -119,6 +119,7 @@ function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
             </Card>
           </Col>
         </Row>
+        <img src="http://localhost:3000/static/file34.png" alt="image" />
       </div>
     </>
   );

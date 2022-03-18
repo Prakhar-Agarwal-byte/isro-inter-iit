@@ -53,10 +53,24 @@ function Header() {
                 </p>
               </a>
             </NavItem>
+            <NavItem>
+              <a
+                href="https://drive.google.com/drive/u/1/folders/1U0SKqwl-ju-DdmoM9bdmhbappYlPHjUd"
+                target="_blank"
+                rel="noreferrer"
+                className="nav-link btn-magnify"
+              >
+                <p>
+                  <span className="d-lg-block d-md-block">
+                    Code Documentation
+                  </span>
+                </p>
+              </a>
+            </NavItem>
             {location.pathname == "/dashboard" && (
               <NavItem>
                 <a
-                  href="https://isro-inter-iit.herokuapp.com/result/download"
+                  href="http://localhost:3000/result/download"
                   target="_blank"
                   rel="noreferrer"
                   className="nav-link btn-magnify"

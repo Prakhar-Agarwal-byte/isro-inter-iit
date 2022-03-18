@@ -72,7 +72,7 @@ function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
             </Card>
           </Col>
         </Row>
-        <img src="http://localhost:3000/static/file34.png" alt="last image" />
+        <img src="http://localhost:3000/static/file34.png" alt="file34" />
       </div>
     </>
   );

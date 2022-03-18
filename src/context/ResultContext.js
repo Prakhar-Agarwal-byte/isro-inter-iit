@@ -33,7 +33,7 @@ class ResultContextProvider extends React.Component {
 				combFlux3 = {};
 			for (let ind in fluxes) {
 				if (fluxes[ind] === "flux_" + type) {
-					combFlux1.time = new Date(parseFloat(words[1])).getTime();
+					combFlux1.time = parseFloat(words[1]);
 					combFlux1[fluxes[ind]] = parseFloat(words[5]);
 					obj[fluxes[ind]].push({
 						time: combFlux1.time,
@@ -41,7 +41,7 @@ class ResultContextProvider extends React.Component {
 						status: "Rise Point",
 					});
 
-					combFlux2.time = new Date(parseFloat(words[2])).getTime();
+					combFlux2.time = parseFloat(words[2]);
 					combFlux2[fluxes[ind]] = parseFloat(words[4]);
 					obj[fluxes[ind]].push({
 						time: combFlux2.time,
@@ -61,7 +61,7 @@ class ResultContextProvider extends React.Component {
 						type: words[0],
 					});
 
-					combFlux3.time = new Date(parseFloat(words[3])).getTime();
+					combFlux3.time = parseFloat(words[3]);
 					combFlux3[fluxes[ind]] = parseFloat(words[5]);
 					obj[fluxes[ind]].push({
 						time: combFlux3.time,

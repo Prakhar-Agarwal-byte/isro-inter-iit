@@ -9,17 +9,22 @@ import {
 	CardTitle,
 	Row,
 	Col,
+	Button,
 } from "reactstrap";
 // core components
-import {
-	dashboardEmailStatisticsChart,
-	dashboardNASDAQChart,
-} from "variables/charts.js";
-
 import WithFluxData from "hoc/WithFluxData";
-import Chart from "chart.js";
+import Chart from "../components/Chart";
+import { useState } from "react";
 
-function Dashboard({ masterChart }) {
+function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
+	const types = ["Type A", "Type B", "Type C", "Type X", "Type M"];
+	const [type, setType] = useState("Type A");
+	let data;
+	if (type === "Type A") data = AChart;
+	else if (type === "Type B") data = BChart;
+	else if (type === "Type C") data = CChart;
+	else if (type === "Type X") data = XChart;
+	else data = MChart;
 	return (
 		<>
 			<div className="content">
@@ -150,7 +155,7 @@ function Dashboard({ masterChart }) {
 								</p>
 							</CardHeader>
 							<CardBody>
-								<Chart data={masterChart}></Chart>
+								<Chart data={masterChart} chartType=""></Chart>
 							</CardBody>
 							<CardFooter>
 								<hr />
@@ -205,14 +210,18 @@ function Dashboard({ masterChart }) {
 								<p className="card-category">
 									Line Chart with Points
 								</p>
+								{types.map((t) => (
+									<Button
+										color="primary"
+										outline={t !== type}
+										onClick={() => setType(t)}
+									>
+										{t}
+									</Button>
+								))}
 							</CardHeader>
 							<CardBody>
-								{/* <Line
-									data={dashboardNASDAQChart.data}
-									options={dashboardNASDAQChart.options}
-									width={400}
-									height={100}
-								/> */}
+								<Chart data={data} chartType={type} />
 							</CardBody>
 							<CardFooter>
 								<div className="chart-legend">

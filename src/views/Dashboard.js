@@ -15,6 +15,7 @@ import {
 import WithFluxData from "hoc/WithFluxData";
 import Chart from "../components/Chart";
 import { useState } from "react";
+import Piechart from "components/PieChart";
 
 function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
   const types = ["Type A", "Type B", "Type C", "Type X", "Type M"];
@@ -94,22 +95,8 @@ function Dashboard({ masterChart, AChart, BChart, CChart, XChart, MChart }) {
                 <CardTitle tag="h5">Flare classification statistics</CardTitle>
               </CardHeader>
               <CardBody style={{ height: "266px" }}>
-                {/* <Pie
-									data={dashboardEmailStatisticsChart.data}
-									options={
-										dashboardEmailStatisticsChart.options
-									}
-								/> */}
+                <Piechart />
               </CardBody>
-              <CardFooter>
-                <div className="legend">
-                  <i className="fa fa-circle" style={{ color: "#6bd098" }} /> A{" "}
-                  <i className="fa fa-circle" style={{ color: "#f17e5d" }} /> B{" "}
-                  <i className="fa fa-circle" style={{ color: "#fcc468" }} /> C{" "}
-                  <i className="fa fa-circle" style={{ color: "#d296da" }} /> X{" "}
-                  <i className="fa fa-circle" style={{ color: "#72b3b3" }} /> M
-                </div>
-              </CardFooter>
             </Card>
           </Col>
           <Col md="8">

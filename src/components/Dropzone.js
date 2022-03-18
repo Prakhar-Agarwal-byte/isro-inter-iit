@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useDropzone } from "react-dropzone";
-import { useHistory } from "react-router-dom";
 import { Button, Alert, Spinner } from "reactstrap";
 import axios from "axios";
+import { ResultContext } from "context/ResultContext";
+import { useHistory } from "react-router-dom";
 
-export default function Accept({ process }) {
+export default function Accept(props) {
   const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
     useDropzone({
       accept: ".txt, .csv, .cdf, .fits",
       maxFiles: 1,
     });
 
-  const history = useHistory();
-
   const [isSuccess, setIsSuccess] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const context = useContext(ResultContext);
+  const navigate = useHistory();
 
   const handleUploadClick = () => {
     if (acceptedFiles.length !== 1) {
@@ -22,7 +23,7 @@ export default function Accept({ process }) {
       return;
     }
     setIsSuccess(true);
-    setIsLoading(true);
+
     const formData = new FormData();
 
     // Update the formData object
@@ -31,18 +32,17 @@ export default function Accept({ process }) {
     // Details of the uploaded file
     console.log(acceptedFiles[0]);
 
+    setLoading(true);
     // Request made to the backend api
     // Send formData object
     axios
       .post("https://isro-inter-iit.herokuapp.com/uploads", formData)
       .then((res) => {
-        setIsLoading(false);
-        process(res.data);
-        console.log(res);
-        history.push("/dashboard");
+        setLoading(false);
+        context.process(res.data);
+        navigate.push("/dashboard");
       })
       .catch((err) => {
-        setIsLoading(false);
         console.log(err);
       });
   };
@@ -64,7 +64,17 @@ export default function Accept({ process }) {
     </li>
   ));
 
-  return (
+  return loading ? (
+    <div>
+      <Spinner color="primary" type="grow" size={300}>
+        Loading...
+      </Spinner>
+      <p>
+        Please wait for some time, While our Machine learning model finds the
+        flares in your data
+      </p>
+    </div>
+  ) : (
     <section className="container">
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
@@ -73,12 +83,7 @@ export default function Accept({ process }) {
           *only ASCII, FITS, CDF, and CSV files are allowed
         </p>
       </div>
-      <Button
-        disabled={isLoading}
-        color="primary"
-        size="lg"
-        onClick={handleUploadClick}
-      >
+      <Button color="primary" size="lg" onClick={handleUploadClick}>
         Upload
       </Button>
       {!isSuccess && (
@@ -90,7 +95,6 @@ export default function Accept({ process }) {
         <h4>Rejected files</h4>
         <ul>{fileRejectionItems}</ul>
       </aside>
-      {isLoading && <Spinner color="primary">Loading...</Spinner>}
     </section>
   );
 }

@@ -117,7 +117,9 @@ class ResultContextProvider extends React.Component {
 
 	render() {
 		return (
-			<ResultContext.Provider value={{ ...this.state }}>
+			<ResultContext.Provider
+				value={{ ...this.state, process: this.process }}
+			>
 				{this.state.result === "" ? <></> : this.props.children}
 			</ResultContext.Provider>
 		);
